@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Delete Train - Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <link rel="stylesheet" href="../css/delete-train.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <h2>🚆 Admin Panel</h2>
+  </div>
+
+  <a href="home.html">📊 Dashboard</a>
+  <a href="RegisterTrain.html">🚂 Register Train</a>
+  <a href="update-train.html">✏️ Update Train</a>
+  <a class="active" href="delete-train.html">🗑️ Delete Train</a>
+  <a href="profile.html">👤 Profile</a>
+
+  <div class="sidebar-logout">
+    <a onclick="logout()">🚪 Logout</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <div class="page-header">
+    <h1>Delete Train</h1>
+    <p>Search and delete train from the system</p>
+  </div>
+
+  <!-- SEARCH SECTION -->
+  <div class="form-card">
+    <h2>Search Train</h2>
+    
+    <div class="form-group">
+      <label>Train Number</label>
+      <input type="text" id="searchTrainNumber" placeholder="Enter train number (e.g. 12901)">
+    </div>
+
+    <button onclick="searchTrain()" style="width: auto; padding: 12px 32px;">Search Train</button>
+  </div>
+
+  <!-- TRAIN DETAILS (Hidden initially) -->
+  <div class="train-details-card" id="trainDetails" style="display: none;">
+    <h3>Train Information</h3>
+    
+    <div class="detail-grid">
+      <div class="detail-item">
+        <span class="detail-label">Train Number</span>
+        <span class="detail-value" id="trainNumber">-</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Train Name</span>
+        <span class="detail-value" id="trainName">-</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Route</span>
+        <span class="detail-value" id="trainRoute">-</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Seats</span>
+        <span class="detail-value" id="trainSeats">-</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Departure Time</span>
+        <span class="detail-value" id="departureTime">-</span>
+      </div>
+      <div class="detail-item">
+        <span class="detail-label">Arrival Time</span>
+        <span class="detail-value" id="arrivalTime">-</span>
+      </div>
+    </div>
+
+    <div class="warning-box">
+      <p><strong>⚠️ Warning:</strong> Deleting this train will:</p>
+      <ul>
+        <li>Remove train from the system permanently</li>
+        <li>Cancel all associated bookings</li>
+        <li>This action cannot be undone</li>
+      </ul>
+    </div>
+
+    <button class="delete-btn-large" onclick="confirmDelete()">Delete Train</button>
+  </div>
+
+</div>
+
+<!-- DELETE CONFIRMATION MODAL -->
+<div class="modal" id="deleteModal">
+  <div class="modal-content">
+    <h3>Confirm Deletion</h3>
+    <p>Are you sure you want to delete this train?</p>
+    <p class="train-info-modal">Train: <strong id="modalTrainInfo">-</strong></p>
+    
+    <div class="modal-buttons">
+      <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+      <button class="confirm-btn" onclick="deleteTrainConfirmed()">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<script src="../../commen/train-data.js"></script>
+<script src="../js/delete-train.js"></script>
+</body>
+</html>

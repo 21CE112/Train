@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Bookings - Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <h2>🚆 Admin Panel</h2>
+  </div>
+
+  <a href="home.html">📊 Dashboard</a>
+  <a href="RegisterTrain.html">🚂 Register Train</a>
+  <a href="update-train.html">✏️ Update Train</a>
+  <a href="delete-train.html">🗑️ Delete Train</a>
+  <a class="active" href="train-bookings.html">📋 Train Bookings</a>
+  <a href="profile.html">👤 Profile</a>
+
+  <div class="sidebar-logout">
+    <a onclick="logout()">🚪 Logout</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <div class="page-header">
+    <h1>Train-wise Bookings</h1>
+    <p>View all bookings organized by train</p>
+  </div>
+
+  <!-- FILTER -->
+  <div class="form-card" style="max-width: 400px;">
+    <h2>Filter by Train</h2>
+    <div class="form-group">
+      <label>Select Train</label>
+      <select id="trainFilter" onchange="filterByTrain()">
+        <option value="">All Trains</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- BOOKINGS BY TRAIN -->
+  <div id="trainBookingsContainer"></div>
+
+</div>
+
+<script src="../js/train-data.js"></script>
+<script src="../js/train-bookings.js"></script>
+</body>
+</html>

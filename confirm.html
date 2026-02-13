@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking Confirmed - Train Portal</title>
+  <link rel="stylesheet" href="../css/ticket.css">
+</head>
+<body>
+
+<div class="ticket-card">
+  
+  <div class="success-badge">✓</div>
+  
+  <div class="ticket-header">
+    <h2>Booking Confirmed!</h2>
+    <p>Your train ticket has been booked successfully</p>
+    <span class="badge" id="statusBadge">CONFIRMED</span>
+  </div>
+
+  <div class="route">
+    <div class="route-station">
+      <h3 id="fromStation">Ahmedabad</h3>
+      <p>Origin</p>
+    </div>
+    
+    <div class="train-icon">🚆</div>
+    
+    <div class="route-station">
+      <h3 id="toStation">Mumbai</h3>
+      <p>Destination</p>
+    </div>
+  </div>
+
+  <div class="details">
+    <div class="detail-item">
+      <span>Train</span>
+      <strong id="trainName">12901 - Gujarat Express</strong>
+    </div>
+
+    <div class="detail-item">
+      <span>Date</span>
+      <strong id="trainDate">25 Jan 2026</strong>
+    </div>
+
+    <div class="detail-item">
+      <span>Class</span>
+      <strong id="trainClass">3AC</strong>
+    </div>
+
+    <div class="detail-item">
+      <span>Total Passengers</span>
+      <strong id="passengerCount">1</strong>
+    </div>
+
+    <div class="detail-item">
+      <span>Status</span>
+      <strong class="green" id="status">Confirmed</strong>
+    </div>
+  </div>
+
+  <div class="pnr-section">
+    <p>PNR Number</p>
+    <strong id="pnrNumber">2845 692 341</strong>
+  </div>
+
+  <!-- PASSENGER DETAILS -->
+  <div class="passenger-details" id="passengerDetails">
+    <h3 style="font-size: 18px; margin-bottom: 16px; color: #1e293b;">Passenger Details</h3>
+    <!-- Passengers will be inserted here -->
+  </div>
+
+  <button onclick="window.location.href='booking-history.html'">View My Bookings</button>
+  <button class="secondary-btn" onclick="window.location.href='train-search.html'">Book Another Ticket</button>
+
+</div>
+
+<script>
+window.onload = function() {
+  let booking = localStorage.getItem("currentBooking");
+  if (booking) {
+    booking = JSON.parse(booking);
+    document.getElementById("fromStation").textContent = booking.from;
+    document.getElementById("toStation").textContent = booking.to;
+    document.getElementById("trainName").textContent = booking.train;
+    document.getElementById("trainDate").textContent = booking.date;
+    document.getElementById("trainClass").textContent = booking.class;
+    document.getElementById("status").textContent = booking.status;
+    document.getElementById("pnrNumber").textContent = booking.pnr;
+    document.getElementById("statusBadge").textContent = booking.status.toUpperCase();
+    document.getElementById("passengerCount").textContent = booking.ticketCount || booking.passengers.length;
+    
+    // Display all passengers
+    let passengersHTML = "";
+    if (booking.passengers && booking.passengers.length > 0) {
+      booking.passengers.forEach((p, i) => {
+        passengersHTML += `
+          <div class="passenger-item">
+            <div class="passenger-header">Passenger ${i + 1}</div>
+            <div class="passenger-info">
+              <span><strong>Name:</strong> ${p.name}</span>
+              <span><strong>Age:</strong> ${p.age}</span>
+              <span><strong>Gender:</strong> ${p.gender}</span>
+              <span><strong>Seat:</strong> ${p.seat}</span>
+              <span><strong>Berth:</strong> ${p.berth}</span>
+            </div>
+          </div>
+        `;
+      });
+    } else {
+      // Backward compatibility for old bookings
+      passengersHTML = `
+        <div class="passenger-item">
+          <div class="passenger-header">Passenger 1</div>
+          <div class="passenger-info">
+            <span><strong>Name:</strong> ${booking.passenger || "N/A"}</span>
+            <span><strong>Seat:</strong> ${booking.seat || "N/A"}</span>
+          </div>
+        </div>
+      `;
+    }
+    document.getElementById("passengerDetails").innerHTML += passengersHTML;
+  }
+};
+</script>
+
+<style>
+.passenger-details {
+  margin: 24px 0;
+  padding: 20px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+}
+
+.passenger-item {
+  background: white;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.passenger-item:last-child {
+  margin-bottom: 0;
+}
+
+.passenger-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: #2563eb;
+  margin-bottom: 10px;
+}
+
+.passenger-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 8px;
+}
+
+.passenger-info span {
+  font-size: 13px;
+  color: #475569;
+}
+
+.passenger-info strong {
+  color: #1e293b;
+}
+</style>
+
+</body>
+</html>

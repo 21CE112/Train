@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Update Train - Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <h2>🚆 Admin Panel</h2>
+  </div>
+
+  <a href="home.html">📊 Dashboard</a>
+  <a href="RegisterTrain.html">🚂 Register Train</a>
+  <a class="active" href="update-train.html">✏️ Update Train</a>
+  <a href="delete-train.html">🗑️ Delete Train</a>
+  <a href="profile.html">👤 Profile</a>
+
+  <div class="sidebar-logout">
+    <a onclick="logout()">🚪 Logout</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <div class="page-header">
+    <h1>Update Train Details</h1>
+    <p>Search and update existing train information</p>
+  </div>
+
+  <!-- SEARCH SECTION -->
+  <div class="form-card">
+    <h2>Search Train</h2>
+    
+    <div class="form-group">
+      <label>Train Number</label>
+      <input type="text" id="searchTrainNumber" placeholder="Enter train number (e.g. 12901)">
+    </div>
+
+    <button onclick="searchTrain()" style="width: auto; padding: 12px 32px;">Search Train</button>
+  </div>
+
+  <!-- UPDATE FORM (Hidden initially) -->
+  <div class="form-card" id="updateForm" style="display: none; margin-top: 24px;">
+    <h2>Update Train Information</h2>
+
+    <div class="form-group">
+      <label>Train Number</label>
+      <input type="text" id="trainNumber" readonly style="background: #e2e8f0; cursor: not-allowed;">
+    </div>
+
+    <div class="form-group">
+      <label>Train Name</label>
+      <input type="text" id="trainName" placeholder="e.g. Rajdhani Express">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>From Station</label>
+        <select id="fromStation">
+          <option value="">Select Station</option>
+          <option>Ahmedabad</option>
+          <option>Surat</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+          <option>Jaipur</option>
+          <option>Bangalore</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>To Station</label>
+        <select id="toStation">
+          <option value="">Select Station</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+          <option>Jaipur</option>
+          <option>Ahmedabad</option>
+          <option>Surat</option>
+          <option>Bangalore</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Number of Seats</label>
+        <input type="number" id="seats" placeholder="e.g. 800">
+      </div>
+
+      <div class="form-group">
+        <label>Ownership</label>
+        <select id="owner">
+          <option value="">Select Type</option>
+          <option>Indian Railways</option>
+          <option>Private</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Departure Time</label>
+        <input type="time" id="departureTime">
+      </div>
+
+      <div class="form-group">
+        <label>Arrival Time</label>
+        <input type="time" id="arrivalTime">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Train Type</label>
+      <select id="trainType">
+        <option value="">Select Train Type</option>
+        <option>Express</option>
+        <option>Superfast</option>
+        <option>Rajdhani</option>
+        <option>Shatabdi</option>
+        <option>Passenger</option>
+      </select>
+    </div>
+
+    <div style="display: flex; gap: 16px; margin-top: 28px;">
+      <button onclick="cancelUpdate()" style="background: white; color: #64748b; border: 2px solid #e2e8f0;">Cancel</button>
+      <button onclick="updateTrainData()">Update Train</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../commen/train-data.js"></script>
+<script src="../js/update-train.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train Search - Train Portal</title>
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/train-search.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="top-nav">
+  <div class="logo">🚆 Train Portal</div>
+
+  <nav>
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="train-search.html" class="nav-link active">Train Search</a>
+    <a href="booking-history.html" class="nav-link">My Bookings</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<!-- SEARCH PANEL -->
+<section class="search-hero">
+  <h1>Find Your Train</h1>
+  <p>Search trains and check seat availability for your journey</p>
+
+  <div class="search-box">
+    <div class="search-group">
+      <label>From Station</label>
+      <select id="fromStation">
+        <option value="">Select origin</option>
+        <option>Ahmedabad</option>
+        <option>Surat</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+        <option>Jaipur</option>
+        <option>Bangalore</option>
+      </select>
+    </div>
+    
+    <div class="search-group">
+      <label>To Station</label>
+      <select id="toStation">
+        <option value="">Select destination</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+        <option>Jaipur</option>
+        <option>Ahmedabad</option>
+        <option>Surat</option>
+        <option>Bangalore</option>
+      </select>
+    </div>
+    
+    <div class="search-group">
+      <label>Travel Date</label>
+      <input type="date" id="travelDate">
+    </div>
+    
+    <button onclick="searchTrains()">Search Trains</button>
+  </div>
+</section>
+
+<!-- TRAIN RESULTS (Hidden by default) -->
+<section class="results-section" id="resultsSection" style="display: none;">
+  
+  <div class="results-header">
+    <h2>Available Trains</h2>
+    <p id="routeInfo">Showing available trains</p>
+  </div>
+
+  <!-- Train cards will be inserted here by JavaScript -->
+
+</section>
+
+<script src="../../commen/train-data.js"></script>
+<script src="../js/customer.js"></script>
+</body>
+</html>

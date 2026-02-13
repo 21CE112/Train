@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings - Train Portal</title>
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/booking-history.css">
+</head>
+<body>
+
+<header class="top-nav">
+  <div class="logo">🚆 Train Portal</div>
+  <nav>
+    <a href="home.html" class="nav-link">Home</a>
+    <a href="train-search.html" class="nav-link">Train Search</a>
+    <a href="booking-history.html" class="nav-link active">My Bookings</a>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </nav>
+</header>
+
+<div class="history-container">
+  
+  <div class="page-header">
+    <h1>My Bookings</h1>
+    <p>View and manage your train ticket bookings</p>
+  </div>
+
+  <div class="filter-card">
+    <h3>Search & Filter</h3>
+    
+    <div class="filter-grid">
+      
+      <div class="filter-group">
+        <label>Search by PNR</label>
+        <input type="text" id="searchPNR" placeholder="Enter PNR number">
+      </div>
+
+      <div class="filter-group">
+        <label>Search by Train</label>
+        <input type="text" id="searchTrain" placeholder="Enter train name or number">
+      </div>
+
+      <div class="filter-group">
+        <label>Booking Date</label>
+        <input type="date" id="filterDate">
+      </div>
+
+      <div class="filter-group">
+        <label>Status</label>
+        <select id="filterStatus">
+          <option value="">All Status</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Cancelled">Cancelled</option>
+          <option value="Waiting">Waiting</option>
+        </select>
+      </div>
+
+    </div>
+
+    <div class="filter-buttons">
+      <button class="primary-btn" onclick="applyFilters()">Apply Filters</button>
+      <button class="secondary-btn" onclick="resetFilters()">Reset</button>
+    </div>
+  </div>
+
+  <div class="bookings-section">
+    <div class="section-header">
+      <h3>Booking History</h3>
+      <span id="resultCount">0 bookings found</span>
+    </div>
+
+    <div id="bookingsList">
+      <div class="empty-state">
+        <p>📭 No bookings found</p>
+        <button class="primary-btn" onclick="window.location.href='train-search.html'">Book Your First Ticket</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- CANCEL CONFIRMATION MODAL -->
+<div class="modal" id="cancelModal">
+  <div class="modal-content">
+    <h3>Cancel Ticket</h3>
+    <p>Are you sure you want to cancel this ticket?</p>
+    
+    <div class="warning-box-modal">
+      <p><strong>⚠️ Cancellation Policy:</strong></p>
+      <ul>
+        <li>Tickets can only be cancelled 24 hours before departure</li>
+        <li>Refund will be processed within 7 working days</li>
+        <li>Cancellation charges may apply</li>
+      </ul>
+    </div>
+
+    <div class="form-group-modal">
+      <label>Enter your password to confirm</label>
+      <input type="password" id="cancelPassword" placeholder="Enter password">
+    </div>
+
+    <div class="modal-buttons">
+      <button class="cancel-btn-modal" onclick="closeCancelModal()">Cancel</button>
+      <button class="confirm-btn-modal" onclick="cancelTicket()">Confirm Cancellation</button>
+    </div>
+  </div>
+</div>
+
+<script src="../js/booking-history.js"></script>
+</body>
+</html>

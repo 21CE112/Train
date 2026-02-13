@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Train</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+  <div class="sidebar-logo">
+    <h2>🚆 Admin Panel</h2>
+  </div>
+
+  <a href="home.html">📊 Dashboard</a>
+  <a class="active" href="RegisterTrain.html">🚂 Register Train</a>
+  <a href="update-train.html">✏️ Update Train</a>
+  <a href="delete-train.html">🗑️ Delete Train</a>
+  <a href="profile.html">👤 Profile</a>
+
+  <div class="sidebar-logout">
+    <a onclick="logout()">🚪 Logout</a>
+  </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <div class="page-header">
+    <h1>Register Train</h1>
+    <p>Add a new train to the system</p>
+  </div>
+
+  <div class="form-card">
+    <h2>New Train Details</h2>
+
+    <div class="form-group">
+      <label>Train Name</label>
+      <input type="text" id="trainName" placeholder="e.g. Rajdhani Express">
+    </div>
+
+    <div class="form-group">
+      <label>Train Number</label>
+      <input type="text" id="trainNumber" placeholder="e.g. 12951">
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>From Station</label>
+        <select id="from">
+          <option value="">Select Station</option>
+          <option>Ahmedabad</option>
+          <option>Surat</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+          <option>Jaipur</option>
+          <option>Bangalore</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>To Station</label>
+        <select id="to">
+          <option value="">Select Station</option>
+          <option>Mumbai</option>
+          <option>Delhi</option>
+          <option>Jaipur</option>
+          <option>Ahmedabad</option>
+          <option>Surat</option>
+          <option>Bangalore</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Number of Seats</label>
+        <input type="number" id="seats" placeholder="e.g. 800">
+      </div>
+
+      <div class="form-group">
+        <label>Ownership</label>
+        <select id="owner">
+          <option value="">Select Type</option>
+          <option>Indian Railways</option>
+          <option>Private</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Departure Time</label>
+        <input type="time" id="departureTime">
+      </div>
+
+      <div class="form-group">
+        <label>Arrival Time</label>
+        <input type="time" id="arrivalTime">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Train Type</label>
+      <select id="trainType">
+        <option value="">Select Train Type</option>
+        <option>Express</option>
+        <option>Superfast</option>
+        <option>Rajdhani</option>
+        <option>Shatabdi</option>
+        <option>Passenger</option>
+      </select>
+    </div>
+
+    <button onclick="registerTrain()">Register Train</button>
+  </div>
+
+</div>
+
+<script src="../../commen/train-data.js"></script>
+<script src="../js/admin.js"></script>
+</body>
+</html>
